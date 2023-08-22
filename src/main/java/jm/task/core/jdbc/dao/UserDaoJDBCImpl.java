@@ -51,6 +51,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
         try {
             statement.executeUpdate("insert into User(name, lastName, age) values ('"+name+"', '"+lastName+"', '"+age+"')");
+            System.out.println("User с именем "+name+" добавлен в базу данных");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -76,6 +77,7 @@ public class UserDaoJDBCImpl implements UserDao {
             user.setAge(resultSet.getByte(4));
             arrayList.add(user);
             }
+            System.out.println(arrayList.toString());
             return arrayList;
         } catch (SQLException e) {
             throw new RuntimeException(e);
